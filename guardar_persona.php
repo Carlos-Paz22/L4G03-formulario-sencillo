@@ -1,33 +1,27 @@
 <?php
-//Datos de conexion
-    $host="localhost";
-    $user="root";
-    $password= "";
-    $bd="personas";
+include('includes/db.php');
 
-    //Crear la conexion
-    $con= new mysqli($host, $user, $password, $bd);
+$nombre= $_POST["nombre"];
+$email= $_POST["email"];
 
-    //Prueba de conexion
-    if($con->connect_error){
-        echo "No se ha logrado establecer conexion.";
-    }else{
-        echo "Conectados a la base de datos. <br>";
-    }
-    $nombre= $_POST["nombre"];
-    $email= $_POST["email"];
+$sql="insert into personas(nombres,email)
+values('$nombre', '$email')";
 
-    //echo "La informacion enviada es:
-        //Nombre: $nombre Email $email";
-    $query="insert into personas(nombres,email)
-                values('$nombre', '$email')";
-  if($con->query($query))  {//$con->query($query)==true es lo mismo o se puede omitir
+if($nombre=="" || $email==""){
+
+}else{
+
+
+  
+
+   
+  if(DB::query($sql))  {//$con->query($query)==true es lo mismo o se puede omitir
       echo "Persona guardad correctamente";
   }else{
-      echo"No se logro guardar la persona".$con->error;
+      echo"No se logro guardar la persona".$conexion->error;
   }
-    $con->close();
 
+}
     header('Location: crear.php');
 
 ?>

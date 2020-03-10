@@ -10,9 +10,7 @@
 <body>
     
 <h2>Crear usuarios<h2>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
+
 
 				<form class="login100-form validate-form" action="guardar_persona.php" method="post" >
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required" >
@@ -29,17 +27,12 @@
 
 	
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">
-							Guardar
-							
-						</button>
+					<input  type="submit" value="guardar"/>
+						
 						<br>
 						<a  href="index.php">Mostrar datos registrados</a>
-					</div>
+					
 				</form>
-			</div>
-		</div>
-	</div>
+	
 </body>
 </html>

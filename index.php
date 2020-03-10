@@ -1,6 +1,10 @@
 <?php 
+include('includes/db.php');
+//DB::init();
 
-	$conexion=mysqli_connect('localhost','root','','personas');
+	
+
+	 //$conexion= new mysqli($host, $user, $password, $bd);
 
  ?>
 
@@ -30,7 +34,8 @@
 
 		<?php 
 		$sql="SELECT * from personas";
-		$result=mysqli_query($conexion,$sql);
+		$result=DB::query($sql);
+		//$result=mysqli_query($conexion,$sql);
 
 		while($mostrar=mysqli_fetch_array($result)){
 		 ?>
@@ -39,8 +44,9 @@
 			<td><?php echo $mostrar['id'] ?></td>
 			<td><?php echo $mostrar['nombres'] ?></td>	
 			<td><?php echo $mostrar['email'] ?></td>
-			
+		
 		</tr>
+	
 	<?php 
 	}
 	 ?>
