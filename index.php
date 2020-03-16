@@ -5,7 +5,8 @@ include('includes/db.php');
 	
 
 	 //$conexion= new mysqli($host, $user, $password, $bd);
-
+	 $sql="SELECT * from personas";
+	 $result=DB::query($sql);
  ?>
 
 
@@ -20,7 +21,7 @@ include('includes/db.php');
 
 	<table border="1" >
 	<tr>
-	<td colspan=3><h2>Datos guardados en la base<h2></td>
+	<td colspan = 4 ><h2>Datos guardados en la base<h2></td>
 	</tr>
 	
 		<tr>
@@ -29,12 +30,12 @@ include('includes/db.php');
 			<td>id</td>
 			<td>nombres</td>
 			<td>email</td>
+			<td>acciones</td>
 			
 		</tr>
 
 		<?php 
-		$sql="SELECT * from personas";
-		$result=DB::query($sql);
+		
 		//$result=mysqli_query($conexion,$sql);
 
 		while($mostrar=mysqli_fetch_array($result)){
@@ -42,9 +43,12 @@ include('includes/db.php');
 
 		<tr>
 			<td><?php echo $mostrar['id'] ?></td>
-			<td><?php echo $mostrar['nombres'] ?></td>	
+			<td><?php echo $mostrar['nombre'] ?></td>	
 			<td><?php echo $mostrar['email'] ?></td>
-		
+			<td>
+			<a href="editar.php?id=<?= $mostrar["id"] ?>">Editar</a>
+			<a href="eliminar.php?id=<?= $mostrar['id']?>">Eliminar</a>
+			</td>
 		</tr>
 	
 	<?php 

@@ -1,22 +1,29 @@
-<?php
+<?php 
 
+class DB {
 
-    class DB{
-        //Datos de conexion
-    static $host="localhost";
-    static $user="root";
-    static $password= "";
-    static $bd="personas";
-        public static function init(){
-            echo "Iniciando base de datos";
-        }
-        public static function query($sql){
-            //Crear conexion
-            $conexion= new mysqli(self::$host, self::$user, self::$password, self::$bd);
-            $result = $conexion->query($sql);
-            $conexion->close();
-            return $result;
+    //Datos de conexión
+    static $host = "localhost";
+    static $user = "root";
+    static $password = "";
+    static $db = "personas";   
 
-        }
+    public static function init(){
+        echo "Iniciando base de datos";
     }
-    ?>
+
+    public static function query($sql){
+        //Crear la conexión
+        $con = new mysqli(self::$host, self::$user, self::$password, self::$db);
+        
+        $result = $con->query($sql); 
+        
+        $con->close();
+
+        return $result;
+        
+        //aca no se ejecuta nada
+    }
+}
+
+?>

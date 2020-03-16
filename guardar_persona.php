@@ -1,27 +1,21 @@
-<?php
-include('includes/db.php');
+<?php 
+    include('includes/db.php');
 
-$nombre= $_POST["nombre"];
-$email= $_POST["email"];
-
-$sql="insert into personas(nombres,email)
-values('$nombre', '$email')";
-
-if($nombre=="" || $email==""){
-
-}else{
-
-
-  
+    $id = $_POST["id"];
+    $nombre = $_POST["nombre"];
+    $email = $_POST["email"];
 
    
-  if(DB::query($sql))  {//$con->query($query)==true es lo mismo o se puede omitir
-      echo "Persona guardad correctamente";
-  }else{
-      echo"No se logro guardar la persona".$conexion->error;
-  }
+    if($nombre=="" || $email==""){
 
-}
-    header('Location: crear.php');
-
+    }else{
+    if(isset($id) == false){
+        header('Location: crear.php');
+        $sql = "insert into personas(nombre,email)values('$nombre', '$email')"; 
+    }else{
+        header('Location: index.php');
+        $sql = "UPDATE personas set nombre='$nombre', email='$email' WHERE id='$id'";
+    }
+    }
+    DB::query($sql);
 ?>
